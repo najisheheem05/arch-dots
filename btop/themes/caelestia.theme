@@ -1,0 +1,83 @@
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]=#151218
+
+# Main text color
+theme[main_fg]=#e8e0e8
+
+# Title color for boxes
+theme[title]=#e8e0e8
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]=#dbb9f9
+
+# Background color of selected item in processes box
+theme[selected_bg]=#221e24
+
+# Foreground color of selected item in processes box
+theme[selected_fg]=#dbb9f9
+
+# Color of inactive/disabled text
+theme[inactive_fg]=#968e98
+
+# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
+theme[graph_text]=#f3b7bd
+
+# Background color of the percentage meters
+theme[meter_bg]=#968e98
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]=#f3b7bd
+
+# CPU, Memory, Network, Proc box outline colors
+theme[cpu_box]=#d8afff
+theme[mem_box]=#c8e3ff
+theme[net_box]=#dab0e3
+theme[proc_box]=#c9b0ff
+
+# Box divider line and small boxes line color
+theme[div_line]=#4a454e
+
+# Temperature graph color (Green -> Yellow -> Red)
+theme[temp_start]=#c8e3ff
+theme[temp_mid]=#ffecf3
+theme[temp_end]=#db9eed
+
+# CPU graph colors (Teal -> Sapphire -> Lavender)
+theme[cpu_start]=#dedcff
+theme[cpu_mid]=#cbbfff
+theme[cpu_end]=#dac2ff
+
+# Mem/Disk free meter (Mauve -> Lavender -> Blue)
+theme[free_start]=#d8afff
+theme[free_mid]=#dac2ff
+theme[free_end]=#c9b0ff
+
+# Mem/Disk cached meter (Sapphire -> Blue -> Lavender)
+theme[cached_start]=#cbbfff
+theme[cached_mid]=#c9b0ff
+theme[cached_end]=#dac2ff
+
+# Mem/Disk available meter (Peach -> Maroon -> Red)
+theme[available_start]=#f1bdec
+theme[available_mid]=#dab0e3
+theme[available_end]=#db9eed
+
+# Mem/Disk used meter (Green -> Teal -> Sky)
+theme[used_start]=#c8e3ff
+theme[used_mid]=#dedcff
+theme[used_end]=#dcd6ff
+
+# Download graph colors (Peach -> Maroon -> Red)
+theme[download_start]=#f1bdec
+theme[download_mid]=#dab0e3
+theme[download_end]=#db9eed
+
+# Upload graph colors (Green -> Teal -> Sky)
+theme[upload_start]=#c8e3ff
+theme[upload_mid]=#dedcff
+theme[upload_end]=#dcd6ff
+
+# Process box color gradient for threads, mem and cpu usage (Sapphire -> Lavender -> Mauve)
+theme[process_start]=#cbbfff
+theme[process_mid]=#dac2ff
+theme[process_end]=#d8afff
