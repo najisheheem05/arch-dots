@@ -339,7 +339,7 @@
     },
     "paths": {
         "mediaGif": "root:/assets/bongocat.gif",
-        "sessionGif": "root:/assets/walkingchicken.gif",
+        "sessionGif": "root:/assets/cathop.gif",
         "wallpaperDir": "~/Pictures/Wallpapers"
     },
     "services": {

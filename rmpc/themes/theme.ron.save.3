@@ -10,7 +10,7 @@
     show_song_table_header: true,
     symbols: (song: "🎵", dir: "📁", marker: "\u{e0b0}"),
     progress_bar: (
-         symbols: ["▰", "▱", " "],  // Modern blocks
+        // symbols: ["▰", "▱", " "],  // Modern blocks
         // symbols: ["█", "░", " "],  // Solid blocks
         // symbols: ["▓", "▒", " "],  // Shaded blocks
         // symbols: ["━", "─", " "],  // Lines
@@ -22,8 +22,8 @@
         // symbols: ["⣿", "⣀", " "],  // Braille style
         // symbols: ["◼", "◻", " "],  // Squares
         // symbols: ["🮂", "🮃", " "],  // Vertical blocks
-        // symbols: ["", "⭘", " "],  // Default
-	// symbols: ["▱", "▰", " "],  // Inverted modern
+        // symbols: ["", "⭘", " "],
+	symbols: ["▱", "▰", " "],  // Modern blocks
     ),
     scrollbar: (
         symbols: ["│", "█", "▲", "▼"],
@@ -50,16 +50,16 @@
 		    kind: Property(Title),
 		    default: (kind: Text("Unknown")),
 		),
-		width: "50%",
+		width: "55%",
 		label: "Title",
 	    ),
 	    (
 		prop: (
-		    kind: Property(Artist),
-		    default: (kind: Text("Unknown")),
+		    kind: Property(Album),
+		    default: (kind: Text("Unknown Album")),
 		),
-		width: "38%",
-		label: "Artist",
+		width: "35%",
+		label: "Album",
 	    ),
 	    (
 		prop: (
