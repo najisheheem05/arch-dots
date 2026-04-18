@@ -1,6 +1,9 @@
 # 1. SETUP PATH FIRST (Crucial for zoxide/pipx tools)
 # Created by `pipx`
-set PATH $PATH /home/zero/.local/bin
+set PATH $PATH /home/naji/.local/bin
+set -gx PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin
+pyenv init - | source
 
 if status is-interactive
     # --- 2. CORE TOOLS ---
@@ -62,4 +65,11 @@ if status is-interactive
 
     # Custom Caelestia Colors
     command cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
+end
+set -gx EDITOR nvim
+
+if status is-login
+    if test -z "$WAYLAND_DISPLAY"
+        exec uwsm start hyprland
+    end
 end
