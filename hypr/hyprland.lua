@@ -66,18 +66,10 @@ optional("ghosttype")
 -- load order, then yours; never touched by updates.
 optional("user")
 
--- 3-finger horizontal swipe switches workspaces
-hl.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace",
-})
+-- PRIVATE
 
--- kitty transparency
-hl.window_rule({
-	name = "kitty-no-blur",
-	match = {
-		class = "^(kitty)$",
-	},
-	no_blur = true,
-})
+require("Private.window_rules")
+
+hl.on("hyprland.start", function()
+	hl.exec_cmd("~/.config/hypr/Private/Autostarts.sh")
+end)
