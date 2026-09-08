@@ -1,57 +1,49 @@
-# 1. SETUP PATH FIRST (Crucial for zoxide/pipx tools)
-# Created by `pipx`
-set PATH $PATH /home/naji/.local/bin
-set -gx PYENV_ROOT $HOME/.pyenv
-fish_add_path $PYENV_ROOT/bin
-pyenv init - | source
+# ~/.local/bin on PATH for every shell, not only interactive: tools dropped in
+# there (claude, oh-my-posh) work, and the ryoku-fastfetch wrapper below
+# resolves. fish_add_path is idempotent.
+if test -d $HOME/.local/bin
+    fish_add_path $HOME/.local/bin
+end
+
+# point `go install` and `cargo install` at ~/.local/bin, and keep an existing
+# editor choice.
+set -gx GOBIN $HOME/.local/bin
+set -gx CARGO_INSTALL_ROOT $HOME/.local
+set -q EDITOR; or set -gx EDITOR nvim
+set -q VISUAL; or set -gx VISUAL nvim
 
 if status is-interactive
-    # --- 2. CORE TOOLS ---
+    set -g fish_greeting
 
-    # Starship Prompt
-    starship init fish | source
-
-    # Zoxide (The Teleporter)
-    if command -v zoxide &>/dev/null
-        zoxide init fish | source
-    end
-
-    # Direnv
-    if command -v direnv &>/dev/null
-        direnv hook fish | source
-    end
-
-    # --- 3. ALIASES & EYE CANDY ---
+    # legible fish syntax colours. fish applies a palette-tied default before
+    # config.fish runs (in our case with a malformed flag that made typed input
+    # the same colour as the background). pin a fixed scheme unconditionally so
+    # it always wins, regardless of the palette.
+    set -g fish_color_normal F1F3E4
+    set -g fish_color_command e2342a
+    set -g fish_color_keyword e83b30
+    set -g fish_color_param F1F3E4
+    set -g fish_color_option CCD0CF
+    set -g fish_color_quote A3C293
+    set -g fish_color_redirection 8AA9CC
+    set -g fish_color_end e83b30
+    set -g fish_color_error FF6B6B
+    set -g fish_color_comment 949699
+    set -g fish_color_operator 93D4E0
+    set -g fish_color_escape 93D4E0
+    set -g fish_color_autosuggestion 949699
 
     # Short Aliases and Abbreviations
     abbr c clear
 
-    # Modern replacements
-    alias ls='eza --icons --group-directories-first -1'
-    alias ll='eza --icons --group-directories-first -l'
-
-    # alias lgt='eza --tree -l --icons --group-directories-first --git'
-    alias la='eza -la --icons --group-directories-first'
-    alias lt='eza --tree --icons --group-directories-first'
-    alias l='eza -lhF --icons --group-directories-first'
-
-    # Colorful tree view with 2 levels by default
-    alias tree='eza --tree --icons --group-directories-first -L 2'
-    #alias cat='bat'
+    abbr gc 'git commit -m'
+    abbr gp 'git push'
+    abbr gs 'git status'
 
     # Safety nets
     alias rm='rm -i'
     alias cp='cp -i'
     alias mv='mv -i'
-
-    # Git Abbreviations
-    abbr lg lazygit
-    abbr ga 'git add .'
-    abbr gc 'git commit -m'
-    abbr gp 'git push'
-    abbr gs 'git status'
-
-    # --- 4. INTEGRATIONS ---
 
     # YAZI WRAPPER (Fixes "cd" on exit)
     function y
@@ -63,13 +55,48 @@ if status is-interactive
         rm -f -- "$tmp"
     end
 
-    # Custom Caelestia Colors
-    command cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
-end
-set -gx EDITOR nvim
+    # branded system readout on terminal open.
+    if command -v ryoku-fastfetch >/dev/null 2>&1
+        ryoku-fastfetch
+    end
 
-if status is-login
-    if test -z "$WAYLAND_DISPLAY"
-        exec uwsm start hyprland
+    # prompt.
+    if command -v starship >/dev/null 2>&1
+        starship init fish | source
+    end
+
+    # directory jumper: hook `cd` into zoxide so plain `cd` learns and jumps to
+    # frecent dirs (`cdi` for an interactive pick).
+    if command -v zoxide >/dev/null 2>&1
+        zoxide init fish --cmd cd | source
+    end
+
+    # runtime version manager: shims + per-project tool versions.
+    if command -v mise >/dev/null 2>&1
+        mise activate fish | source
+    end
+
+    # fzf walks the tree via fd when present.
+    if command -v fd >/dev/null 2>&1
+        set -gx FZF_DEFAULT_COMMAND 'fd --hidden --follow --exclude .git'
+        set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+        set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --follow --exclude .git'
+    end
+
+    # fzf keys: Ctrl-R history, Ctrl-T files, Alt-C cd.
+    if command -v fzf >/dev/null 2>&1
+        fzf --fish | source
+    end
+
+    # eza listings.
+    if command -v eza >/dev/null 2>&1
+        alias ls 'eza -lh --group-directories-first --icons=auto'
+        alias lsa 'ls -a'
+        alias lt 'eza --tree --level=2 --long --icons --git'
+        alias lta 'lt -a'
     end
 end
+
+# user overrides: ~/.config/fish/user.fish is never shipped, never touched on
+# update, and loads last so your stuff wins.
+test -f $__fish_config_dir/user.fish && source $__fish_config_dir/user.fish
