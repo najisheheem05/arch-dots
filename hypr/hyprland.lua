@@ -66,8 +66,6 @@ optional("ghosttype")
 -- load order, then yours; never touched by updates.
 optional("user")
 
--- PRIVATE
-
 require("Private.window_rules")
 
 hl.on("hyprland.start", function()

@@ -3,6 +3,8 @@
 -- after Ryoku's defaults and before your user.lua, which still wins.
 
 hl.config({
+  general = { gaps_in = 5, gaps_out = 9, border_size = 1 },
+  decoration = { rounding = 4 },
   input = { kb_layout = "us", kb_variant = "", kb_options = "", follow_mouse = 1, natural_scroll = true, touchpad = { natural_scroll = true } },
 })
 

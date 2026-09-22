@@ -5,35 +5,35 @@
 # still wins.
 
 # Syntax highlighting.
-set -g fish_color_normal e4e1e9
-set -g fish_color_command bec2ff
-set -g fish_color_keyword e7b9d5
-set -g fish_color_quote c5c4dd
-set -g fish_color_redirection c7c5d0
-set -g fish_color_end e7b9d5
+set -g fish_color_normal dee3e6
+set -g fish_color_command 89d0ed
+set -g fish_color_keyword c4c3eb
+set -g fish_color_quote b3cad5
+set -g fish_color_redirection c0c8cc
+set -g fish_color_end c4c3eb
 set -g fish_color_error ffb4ab
-set -g fish_color_param e4e1e9
-set -g fish_color_comment c7c5d0
-set -g fish_color_selection --background=3d4279
-set -g fish_color_operator e7b9d5
-set -g fish_color_escape c5c4dd
-set -g fish_color_autosuggestion c7c5d0
+set -g fish_color_param dee3e6
+set -g fish_color_comment c0c8cc
+set -g fish_color_selection --background=004d62
+set -g fish_color_operator c4c3eb
+set -g fish_color_escape b3cad5
+set -g fish_color_autosuggestion c0c8cc
 set -g fish_color_cancel ffb4ab
-set -g fish_color_search_match --background=3d4279
+set -g fish_color_search_match --background=004d62
 set -g fish_color_valid_path --underline
 
 # Completion pager.
-set -g fish_pager_color_progress c7c5d0
-set -g fish_pager_color_prefix bec2ff
-set -g fish_pager_color_completion e4e1e9
-set -g fish_pager_color_description c7c5d0
-set -g fish_pager_color_selected_background --background=3d4279
+set -g fish_pager_color_progress c0c8cc
+set -g fish_pager_color_prefix 89d0ed
+set -g fish_pager_color_completion dee3e6
+set -g fish_pager_color_description c0c8cc
+set -g fish_pager_color_selected_background --background=004d62
 
 # fzf takes the same palette, so Ctrl-R and Ctrl-T match the terminal they open
 # in. Appended to whatever options are already set rather than replacing them.
 set -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS \
---color=fg:#e4e1e9,bg:-1,hl:#bec2ff \
---color=fg+:#e4e1e9,bg+:#3d4279,hl+:#bec2ff \
---color=info:#c5c4dd,prompt:#bec2ff,pointer:#e7b9d5 \
---color=marker:#e7b9d5,spinner:#c5c4dd,header:#c7c5d0 \
---color=border:#46464f"
+--color=fg:#dee3e6,bg:-1,hl:#89d0ed \
+--color=fg+:#dee3e6,bg+:#004d62,hl+:#89d0ed \
+--color=info:#b3cad5,prompt:#89d0ed,pointer:#c4c3eb \
+--color=marker:#c4c3eb,spinner:#b3cad5,header:#c0c8cc \
+--color=border:#40484c"

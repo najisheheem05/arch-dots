@@ -100,3 +100,5 @@ end
 # user overrides: ~/.config/fish/user.fish is never shipped, never touched on
 # update, and loads last so your stuff wins.
 test -f $__fish_config_dir/user.fish && source $__fish_config_dir/user.fish
+
+fish_add_path /home/naji/Codes/flutter/bin

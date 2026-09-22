@@ -1,5 +1,7 @@
 -- Managed by ryoku-monitor (Ryoku Settings layout). The per-output modes are
--- the ones chosen in the Displays section; edits here may be overwritten.
+-- the ones chosen in the Displays section. This file is regenerated, so edits
+-- here are lost: put durable manual overrides in ~/.config/hypr/monitors_user.lua
+-- (see monitors_user.lua.example), which is loaded after this file and wins.
 
 hl.monitor({ output = "eDP-1", mode = "1920x1080@144.00", position = "0x0", scale = 1, cm = "srgb", bitdepth = 8, sdrbrightness = 1 })
 
